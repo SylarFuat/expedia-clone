@@ -1,0 +1,41 @@
+
+
+<h2 class="text-2xl font-bold tracking-tight text-gray-900">Vehicle List</h2>
+
+
+    <div class="mt-6 w-full">
+    {% for vehicle in vehicles %}
+    <div class="group relative flex my-4 border-b border-b-1 ">
+        <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
+            <img src="{{ vehicle.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
+        </div>
+        <div class="mt-4 flex justify-between">
+          <div>
+            <h3 class="text-sm text-gray-700">
+              <a href="#">
+                <span class=""></span>
+                {{vehicle.year}} {{vehicle.brand}} 
+              </a>
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">{{vehicle.model}}</p>
+          </div>
+          <p class="text-sm font-medium text-gray-900">${{vehicle.price}}</p>
+          <p class="text-sm font-medium text-gray-900">Pay at Pick up</p>
+          {% if vehicle.free_cancellation %}<p class="text-sm font-medium text-gray-900">Free Cancellation</p>{% endif %}
+          {% if vehicle.unlimited_milage %}
+            <p class="text-sm font-medium text-gray-900">Unlimited Mileage</p>
+          {% else %}
+            <p class="text-sm font-medium text-gray-900">200 miels per day</p>
+          {% endif %}
+          {% if vehicle.rating %}<p class="text-sm font-medium text-gray-900">{{vehicle.rating}}</p>{%endif%}
+          <!-- {% for code, name in getlax_us %}
+          <p class="text-sm font-medium text-gray-900">${{name}}</p>
+          {% endfor %} -->
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+
+
+
