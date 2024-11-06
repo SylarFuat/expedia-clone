@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('', include('userforms.urls')),
     path('', include('vehiclelist.urls')),
+    path('search', views.search_view, name='search'),
 ]
 
 if settings.DEBUG:

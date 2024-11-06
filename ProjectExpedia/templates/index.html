@@ -19,11 +19,16 @@
             </div>
 
             <div class="my-5 mt-0 max-w-screen-xl w-full">
-                <form class="max-w-screen-xl w-full mx-auto">   
+                <form class="max-w-screen-xl w-full mx-auto" method="post" action="{% url 'search' %}">
                     
-                    <div class="grid grid-cols-7 gap-5">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Search</button>
+                    
+                    
+                    <div class="grid grid-cols-6 gap-5">
                         <!-- Pick-up-->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="default-search" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pick-up:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -31,10 +36,10 @@
                                 </svg>
                             </div>
                             <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pick-up" required />
-                        </div>
+                        </div> -->
 
                         <!-- Same as pick-up -->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="default-search" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Same as pick-up:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -42,10 +47,10 @@
                                 </svg>
                             </div>
                             <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Same as pick-up" required />
-                        </div>
+                        </div> -->
 
                         <!-- Pick-up date -->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="default-datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pick-up date:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -53,10 +58,10 @@
                                 </svg>
                             </div>
                             <input datepicker id="default-datepicker2" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select pick-up date">
-                        </div>
+                        </div> -->
 
                         <!-- Return date -->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="default-datepicker" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Return date:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -64,10 +69,10 @@
                                 </svg>
                             </div>
                             <input datepicker id="default-datepicker" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select  return date">
-                        </div>
+                        </div> -->
 
                         <!-- Select time -->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select time:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -75,10 +80,10 @@
                                 </svg>
                             </div>
                             <input type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="00:00" required />
-                        </div>
+                        </div> -->
 
                         <!-- Select return time -->
-                        <div class="relative">
+                        <!-- <div class="relative">
                             <label for="time" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select return time:</label>
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none top-6">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -86,13 +91,13 @@
                                 </svg>
                             </div>
                             <input type="time" id="time" class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="09:00" max="18:00" value="00:00" required />
-                        </div>
+                        </div> -->
 
                         <!-- Submit Button -->
-                        <div>
+                        <!-- <div>
                             <label for="submit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> &nbsp</label>
                             <button type="submit" class="text-white end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none w-full focus:ring-blue-300 font-medium rounded-2xl text-sm px-6 p-4 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-                        </div>
+                        </div> -->
                     </div>
                     
                 </form>
