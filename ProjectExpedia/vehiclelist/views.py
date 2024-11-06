@@ -16,7 +16,8 @@ def vehicle_detail(request, vehicle_id):
     }
     return render(request, 'vehiclelist/vdetail.html', context)
 
-
+def tryhard():
+    pass
 
 
     
