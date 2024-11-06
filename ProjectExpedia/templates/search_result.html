@@ -4,46 +4,22 @@
     Expedia Clone .v1 Search Result
 {% endblock %}
 {% block content %}
-<h2 class="text-2xl font-bold tracking-tight text-gray-900">Search Result</h2>
 
 
+<section class="bg-white dark:bg-gray-900 my-10">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 rounded-2xl border">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Search Result</h2>
     <div class="mt-6 w-full">'
         
         <p>Pick-Up Location: {{ pickup_location }}</p>
         <p>Pick-Up Date: {{ pickup_date }}</p>
+        <p>Pick-Up Time: {{ pickup_time }}</p>
         <p>Return Date: {{ return_date }}</p>
-    
-    <!-- <div class="group relative flex my-4 border-b border-b-1 ">
-        <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
-            <img src="{{ vehicle_details.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
-        </div>
-        <div class="mt-4 flex justify-between">
-          <div>
-            <h3 class="text-sm text-gray-700">
-              <a href="#">
-                <span class=""></span>
-                {{vehicle_details.year}} {{vehicle_details.brand}} 
-              </a>
-            </h3>
-            <p class="mt-1 text-sm text-gray-500">{{vehicle_details.model}}</p>
-          </div>
-          <p class="text-sm font-medium text-gray-900">${{vehicle_details.price}}</p>
-          <p class="text-sm font-medium text-gray-900">Pay at Pick up</p>
-          {% if vehicle_details.free_cancellation %}<p class="text-sm font-medium text-gray-900">Free Cancellation</p>{% endif %}
-          {% if vehicle_details.unlimited_milage %}
-            <p class="text-sm font-medium text-gray-900">Unlimited Mileage</p>
-          {% else %}
-            <p class="text-sm font-medium text-gray-900">200 miels per day</p>
-          {% endif %}
-          {% if vehicle_details.rating %}<p class="text-sm font-medium text-gray-900">{{vehicle_details.rating}}</p>{%endif%}
-           {% for code, name in getlax_us %}
-          <p class="text-sm font-medium text-gray-900">${{name}}</p>
-          {% endfor %} 
-        </div>
-      </div> -->
+        <p>Return Time: {{ return_time }}</p>
       
     </div>
-
+  </div>
+</section>
 {% endblock %}
 
 

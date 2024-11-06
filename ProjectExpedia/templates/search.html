@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+{% block title %}
+    Expedia Clone .v1
+{% endblock %}
+
+{% block content %}
+<form class="max-w-screen-xl w-full mx-auto" method="post" action="{% url 'search' %}">
+                    
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Search</button>
+</form>
+{% endblock %}
