@@ -18,7 +18,7 @@ def search_view(request):
 
     form = SearchForm(request.POST or None)
     locations = VehicleLocation.objects.all()
-    context = {'form': form, 'locations': locations}
+    context = {'form': form, 'locations': locations,}
 
     if request.method =='POST' and form.is_valid(): 
         pickup_location_id = form.cleaned_data['pickup_location']
@@ -44,7 +44,7 @@ def search_view(request):
             'return_time': return_time,
             'vehicles': vehicles,
             'reservation_days': reservation_days,
-            'locations': locations
+            'locations': locations,
             # 'cheapest_opt': cheapest_opt,
             # 'highest_opt': highest_opt,
         }
