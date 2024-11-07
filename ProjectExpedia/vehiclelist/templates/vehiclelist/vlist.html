@@ -1,4 +1,5 @@
 {% load math_extras %}
+{% load static %}
 
 <h2 class="text-2xl font-bold tracking-tight text-gray-900">Vehicle List</h2>
 
@@ -7,7 +8,11 @@
     {% for vehicle in vehicles %}
       <div class="group relative flex my-4 border-b border-b-1 ">
           <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
+            {% if vehicle.imagefield %}
               <img src="{{ vehicle.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
+              {% else %}
+              <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image" style="width: 150px; height:auto;">
+            {% endif %}
           </div>
           <div class="mt-4 flex justify-between md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
             <div>

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load tailwind_filters %}
-
+{% load static %}
 
 {% block title %}
     Expedia Clone .v1
@@ -115,7 +115,7 @@
     <section class="bg-white dark:bg-gray-900 my-10">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 rounded-2xl border">
 
-            {% include 'vehiclelist/vlist.html' with vehicles=vehicles getlax_us=getlax_us %}
+            {% include 'vehiclelist/vlist.html' with vehicles=vehicles %}
             
         </div>
     </section>

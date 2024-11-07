@@ -21,7 +21,11 @@
       {% for vehicle in vehicles %}
       <div class="group relative flex my-4 border-b border-b-1 ">
           <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
-              <img src="{{ vehicle.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
+              {% if vehicle.imagefield %}
+                <img src="{{ vehicle.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
+                {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="Placeholder Image" style="width: 150px; height:auto;">
+              {% endif %}
           </div>
           <div class="mt-4 flex justify-between md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
             <div>
@@ -43,6 +47,14 @@
             {% endif %}
             {% if vehicle.rating %}<p class="text-sm font-medium text-gray-900">{{vehicle.rating}}</p>{%endif%}
             <div><p class="text-xl font-bold text-red-600">${{vehicle.price|multiply:reservation_days}}</p></div>
+            <div>
+              <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Reserve 
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+              </button>
+            </div>
             
             <!-- {% for code, name in getlax_us %}
             <p class="text-sm font-medium text-gray-900">${{name}}</p>
@@ -61,7 +73,7 @@
         <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
           <div class="flex flex-col pb-3">
               <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pick-up Location:</dt>
-              {% for location in locations %}<dd class="text-lg font-semibold"><a href="{% url 'vehiclelist:location_list' location.id %}"> {{ location.location }}</a></dd>{%endfor%}
+              <dd class="text-lg font-semibold"><a href="{% url 'vehiclelist:location_list' pickup_location.id %}"> {{ pickup_location.location }}</a></dd>
           </div>
           <div class="flex flex-col py-3">
             <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pick-up Date:</dt>
