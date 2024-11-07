@@ -13,6 +13,9 @@ class VehicleLocation(models.Model):
     def __str__(self):
         return self.name
     
+    def full_name(self):
+        return f"{self.name} - {self.location}"
+    
 class VehicleCategory(models.Model):
     category = models.CharField(max_length=50)
     def __str__(self):
@@ -33,7 +36,7 @@ class Vehicle(models.Model):
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=None, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.brand} {self.model}" 
+        return f"{self.brand} {self.model}"
 
 class VehicleForm(forms.ModelForm):
     class Meta:

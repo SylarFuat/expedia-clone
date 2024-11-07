@@ -1,25 +1,101 @@
 {% extends 'base.html' %}
 
+{% load math_extras %}
+
+
 {% block title %}
     Expedia Clone .v1 Search Result
 {% endblock %}
 {% block content %}
 
 
-<section class="bg-white dark:bg-gray-900 my-10">
-  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 rounded-2xl border">
-    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Search Result</h2>
-    <div class="mt-6 w-full">'
-        
-        <p>Pick-Up Location: {{ pickup_location }}</p>
-        <p>Pick-Up Date: {{ pickup_date }}</p>
-        <p>Pick-Up Time: {{ pickup_time }}</p>
-        <p>Return Date: {{ return_date }}</p>
-        <p>Return Time: {{ return_time }}</p>
+<section class="flex mx-auto my-10 justify-center max-w-screen-xl">
+
+  <div class="w-4/5 px-4 rounded-2xl border mr-10">
+    <div class="w-full max-w-screen-xl flex flex-wrap items-center justify-between p-4 text-right">
+      <div><h2 class="text-2xl font-bold tracking-tight text-gray-900">Search Result</h2></div>
       
     </div>
+    <div class="mt-6 w-full">
+      
+      {% for vehicle in vehicles %}
+      <div class="group relative flex my-4 border-b border-b-1 ">
+          <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
+              <img src="{{ vehicle.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
+          </div>
+          <div class="mt-4 flex justify-between md:flex-row flex-col flex justify-between items-start w-full pb-8 space-y-4 md:space-y-0">
+            <div>
+              <h3 class="text-sm text-gray-700">
+                <a href="/vehicle_detail/{{vehicle.id}}">
+                  <span class=""></span>
+                  {{vehicle.year}} {{vehicle.brand}}
+                </a>
+              </h3>
+              <p class="mt-1 text-sm text-gray-500">{{vehicle.model}}</p>
+            </div>
+            <div><p class="text-sm font-medium text-gray-900">${{vehicle.price}}</p></div>
+            <div><p class="text-sm font-medium text-gray-900">Pay at Pick up</p></div>
+            <div>{% if vehicle.free_cancellation %}<p class="text-sm font-medium text-gray-900">Free Cancellation</p>{% endif %}</div>
+            {% if vehicle.unlimited_milage %}
+              <div><p class="text-sm font-medium text-gray-900">Unlimited Mileage</p></div>
+            {% else %}
+              <div><p class="text-sm font-medium text-gray-900">200 miels per day</p></div>
+            {% endif %}
+            {% if vehicle.rating %}<p class="text-sm font-medium text-gray-900">{{vehicle.rating}}</p>{%endif%}
+            <div><p class="text-xl font-bold text-red-600">${{vehicle.price|multiply:reservation_days}}</p></div>
+            
+            <!-- {% for code, name in getlax_us %}
+            <p class="text-sm font-medium text-gray-900">${{name}}</p>
+            {% endfor %} -->
+          </div>
+        </div>
+        {% endfor %}
+      </div>
   </div>
+
+  <div class="w-1/5 px-4 rounded-2xl border py-4">
+    <div>
+      <div><h2 class="text-2xl font-bold tracking-tight text-gray-900">Search Result</h2></div>
+      
+
+        <dl class="max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+          <div class="flex flex-col pb-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pick-up Location:</dt>
+              {% for location in locations %}<dd class="text-lg font-semibold"><a href="{% url 'vehiclelist:location_list' location.id %}"> {{ pickup_location }}</a></dd>{%endfor%}
+          </div>
+          <div class="flex flex-col py-3">
+            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pick-up Date:</dt>
+            <dd class="text-lg font-semibold">{{ pickup_date }}</dd>
+          </div>
+          <div class="flex flex-col py-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pick-up Time:</dt>
+              <dd class="text-lg font-semibold">{{ pickup_time }}</dd>
+          </div>
+          <div class="flex flex-col pt-3">
+              <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Drop-off Date:</dt>
+              <dd class="text-lg font-semibold">{{ return_date }}</dd>
+          </div>
+          <div class="flex flex-col pt-3">
+            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Drop-off Time:</dt>
+            <dd class="text-lg font-semibold">{{ return_time }}</dd>
+          </div>
+          <div class="flex flex-col pt-3">
+            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Trip Days:</dt>
+            <dd class="text-lg font-semibold">{{reservation_days}}</dd>
+          </div>
+        </dl>
+
+
+    </div>
+
+  </div>
+
 </section>
 {% endblock %}
 
 
+
+
+
+
+  

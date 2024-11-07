@@ -4,12 +4,16 @@
     Expedia Clone .v1
 {% endblock %}
 {% block content %}
-<h2 class="text-2xl font-bold tracking-tight text-gray-900">Vehicle List</h2>
+
+
+<section class="bg-white dark:bg-gray-900 my-10">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 rounded-2xl border">
+    <h2 class="text-2xl font-bold tracking-tight text-gray-900">Vehicle List</h2>
 
 
     <div class="mt-6 w-full">
     
-    <div class="group relative flex my-4 border-b border-b-1 ">
+      <div class="group relative flex my-4 border-b border-b-1 ">
         <div class="aspect-w-1 flex overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 mr-10">
             <img src="{{ vehicle_details.imagefield.url }}" alt="" class="" style="width: 150px; height:auto;">
         </div>
@@ -39,6 +43,10 @@
       </div>
       
     </div>
+  </div>
+</section>
+
+
 
 {% endblock %}
 
